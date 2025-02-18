@@ -1,6 +1,5 @@
 package com.example.todo.domain.global.common;
 
-import com.example.todo.domain.todo.dto.TodoCreationResponseDto;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
