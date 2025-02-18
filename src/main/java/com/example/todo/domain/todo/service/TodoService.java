@@ -81,6 +81,22 @@ public class TodoService {
     }
 
     @Transactional
+    public TodoUpdateResponseDto updateTodoState(Long id) {
+        Todo todo = todoRepository.findById(id)
+                .orElseThrow(() -> new CustomException(ErrorCode.TODO_NOT_FOUND));
+
+        todo.setCompleted(!todo.isCompleted());
+        todoRepository.save(todo);
+
+        return new TodoUpdateResponseDto(
+                todo.getId(),
+                todo.getDescription(),
+                todo.isCompleted(),
+                todo.getCreatedAt()
+        );
+    }
+
+    @Transactional
     public void deleteTodo(Long id) {
 
         Todo todo = todoRepository.findById(id)
