@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -64,6 +65,15 @@ public class TodoController {
         TodoUpdateResponseDto updatedTodo = todoService.updateTodo(id, todoRequest);
 
         return ResponseEntity.ok().body(CommonResponse.of("할일 수정 성공", updatedTodo));
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<CommonResponse<TodoUpdateResponseDto>> updateTodoState(
+            @PathVariable Long id) {
+
+        TodoUpdateResponseDto updatedTodo = todoService.updateTodoState(id);
+
+        return ResponseEntity.ok(CommonResponse.of("할일 상태 변경 성공", updatedTodo));
     }
 
     @DeleteMapping("/today/{id}")
