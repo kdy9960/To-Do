@@ -22,11 +22,14 @@
 ##### 2-2. 프로젝트 클론 및 디렉토리 이동:
 
 - GitHub 저장소에서 프로젝트를 클론합니다:
-  - bash ``` git clone [저장소 URL] ```
+  - ```bash
+    git clone https://github.com/kdy9960/To-Do.git
+    ``
 
 - 프로젝트 디렉토리로 이동합니다:
-  - bash ``` cd [프로젝트 디렉토리] ```
-
+  - ```bash
+    cd To-Do
+    ``
 ##### 2-3.환경 변수 설정:
 - ```application-local.yml``` 파일에서 데이터베이스 연결 정보를 환경 변수로 설정하였습니다:
 
