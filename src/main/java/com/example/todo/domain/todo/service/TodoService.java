@@ -22,6 +22,10 @@ public class TodoService {
     @Transactional
     public TodoCreationResponseDto createTodo(TodoCreationRequestDto requestDto) {
 
+        if (requestDto.getDescription() == null || requestDto.getDescription().trim().isEmpty()) {
+            throw new CustomException(ErrorCode.TODO_DESCRIPTION_REQUIRED);
+        }
+
         Todo todo = Todo.builder()
                 .description(requestDto.getDescription())
                 .build();
