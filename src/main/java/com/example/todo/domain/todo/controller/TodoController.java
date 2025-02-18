@@ -1,5 +1,6 @@
 package com.example.todo.domain.todo.controller;
 
+import com.example.todo.domain.global.common.CommonResponse;
 import com.example.todo.domain.todo.dto.TodoCreationRequestDto;
 import com.example.todo.domain.todo.dto.TodoCreationResponseDto;
 import com.example.todo.domain.todo.entity.Todo;
@@ -43,12 +44,11 @@ public class TodoController {
     }
 
     @GetMapping("/today/{id}")
-    public ResponseEntity<TodoCreationResponseDto> getTodoById(
+    public ResponseEntity<CommonResponse<TodoCreationResponseDto>> getTodoById(
             @PathVariable Long id) {
 
         TodoCreationResponseDto responseDto = todoService.getTodo(id);
 
-        return ResponseEntity.status(HttpStatus.OK)
-                .body(responseDto);
+        return ResponseEntity.ok(CommonResponse.of("할일 단일 조회 성공", responseDto));
     }
 }
