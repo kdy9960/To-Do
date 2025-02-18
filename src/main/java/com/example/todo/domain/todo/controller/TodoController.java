@@ -11,6 +11,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -63,5 +64,14 @@ public class TodoController {
         TodoUpdateResponseDto updatedTodo = todoService.updateTodo(id, todoRequest);
 
         return ResponseEntity.ok().body(CommonResponse.of("할일 수정 성공", updatedTodo));
+    }
+
+    @DeleteMapping("/today/{id}")
+    public ResponseEntity<CommonResponse<TodoUpdateResponseDto>> deleteTodo(
+            @PathVariable Long id) {
+
+        todoService.deleteTodo(id);
+
+        return ResponseEntity.ok().body(CommonResponse.of("할일 삭제 성공", null));
     }
 }

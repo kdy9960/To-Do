@@ -19,7 +19,6 @@ public class TodoService {
 
     private final TodoRepository todoRepository;
 
-
     @Transactional
     public TodoCreationResponseDto createTodo(TodoCreationRequestDto requestDto) {
 
@@ -75,5 +74,15 @@ public class TodoService {
                 todo.isCompleted(),
                 todo.getCreatedAt()
         );
+    }
+
+    @Transactional
+    public void deleteTodo(Long id) {
+
+        Todo todo = todoRepository.findById(id)
+                .orElseThrow(() -> new CustomException(ErrorCode.TODO_NOT_FOUND));
+
+        todoRepository.delete(todo);
+
     }
 }
