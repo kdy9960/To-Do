@@ -32,13 +32,13 @@ public class TodoController {
     }
 
     @PostMapping
-    public ResponseEntity<TodoCreationResponseDto> createTodo(
+    public ResponseEntity<CommonResponse<TodoCreationResponseDto>> createTodo(
             @RequestBody TodoCreationRequestDto requestDto) {
 
         TodoCreationResponseDto todoCreationResponseDto = todoService.createTodo(requestDto);
 
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(todoCreationResponseDto);
+                .body(CommonResponse.of("할일 생성 성공", todoCreationResponseDto));
     }
 
     @GetMapping("/today")
@@ -53,7 +53,7 @@ public class TodoController {
 
         TodoCreationResponseDto responseDto = todoService.getTodo(id);
 
-        return ResponseEntity.ok(CommonResponse.of("할일 단일 조회 성공", responseDto));
+        return ResponseEntity.ok().body(CommonResponse.of("할일 단일 조회 성공", responseDto));
     }
 
     @PutMapping("/today/{id}")
