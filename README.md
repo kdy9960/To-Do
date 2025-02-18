@@ -30,13 +30,13 @@
 ##### 2-3.환경 변수 설정:
 - ```application-local.yml``` 파일에서 데이터베이스 연결 정보를 환경 변수로 설정하였습니다:
 
-```yaml```
-spring:
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: ${LOCAL_DB_URL}
-    username: ${LOCAL_DB_USER}
-    password: ${LOCAL_DB_PASSWORD}
+  ```yaml
+  spring:
+    datasource:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: ${LOCAL_DB_URL}
+      username: ${LOCAL_DB_USER}
+      password: ${LOCAL_DB_PASSWORD}
 
 - 시스템 환경 변수에 아래와 같이 설정합니다:
   - ```LOCAL_DB_URL```: 예시) jdbc:mysql://localhost:3306/your_database_name
