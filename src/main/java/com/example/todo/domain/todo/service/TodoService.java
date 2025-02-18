@@ -4,6 +4,7 @@ import com.example.todo.domain.todo.dto.TodoCreationRequestDto;
 import com.example.todo.domain.todo.dto.TodoCreationResponseDto;
 import com.example.todo.domain.todo.entity.Todo;
 import com.example.todo.domain.todo.repository.TodoRepository;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,4 +31,10 @@ public class TodoService {
                 savedTodo.getCreatedAt()
         );
     }
+
+    public List<Todo> getAllTodos() {
+
+        return todoRepository.findAll();
+    }
+
 }
