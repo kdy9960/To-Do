@@ -32,9 +32,23 @@ public class TodoService {
         );
     }
 
+    @Transactional
     public List<Todo> getAllTodos() {
 
         return todoRepository.findAll();
     }
 
+    @Transactional
+    public TodoCreationResponseDto getTodo(Long id) {
+
+        Todo todo = todoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Todo not found"));
+
+        return new TodoCreationResponseDto(
+                todo.getId(),
+                todo.getDescription(),
+                todo.isCompleted(),
+                todo.getCreatedAt()
+        );
+    }
 }
